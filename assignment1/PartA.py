@@ -2,8 +2,6 @@ import sys
 import heapq
 
 def tokenize(text_file_path):
-    file = open(text_file_path, encoding="utf-8", errors="ignore")
-    tokens = list()
     """
     O(n) time complexity
     Iterate through each char
@@ -12,10 +10,12 @@ def tokenize(text_file_path):
         if word str is not empty, append to tokens and reset word
     after finish iteration, if word str is not empty, append last token to tokens
     """
+    file = open(text_file_path, encoding="utf-8", errors="ignore")
+    tokens = list()
     for line in file:
         word = str()
         for char in line:
-            if char.isalnum():
+            if char.isalnum() and char.isascii():
                 word += char.lower()
             else:
                 if word:
@@ -27,7 +27,7 @@ def tokenize(text_file_path):
     file.close()
     return tokens
 
-def compute_word_frequencies(tokens):
+def computeWordFrequencies(tokens):
     """
     O(m) time complexity 
     use hashmap, if token in hashmap, increment that key by 1. if token not in hashmap, create new key with token
@@ -41,11 +41,11 @@ def compute_word_frequencies(tokens):
     return hashmap
 
 
-def print_frequencies(frequencies):
+def printFrequencies(frequencies):
     """
     O(k log k) time complexity
     Use max heap (negative since default heap is min heap)
-    push all freq and tokens into max heap (heapify)
+    push all freq and tokens into max heap
     pop everything from heap from most to least
     """
     max_heap = list()
@@ -54,13 +54,13 @@ def print_frequencies(frequencies):
     while max_heap:
         neg_count, token = heapq.heappop(max_heap)
         print(f"{token} - {-neg_count}")
-        
+
 
 
 def main():
     tokens = tokenize(sys.argv[1])
-    freq = compute_word_frequencies(tokens)
-    print_frequencies(freq)
+    freq = computeWordFrequencies(tokens)
+    printFrequencies(freq)
 
 
 if __name__ == "__main__":
