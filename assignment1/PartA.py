@@ -27,7 +27,7 @@ def tokenize(text_file_path):
     file.close()
     return tokens
 
-def computeWordFrequencies(tokens):
+def compute_word_frequencies(tokens):
     """
     O(m) time complexity 
     use hashmap, if token in hashmap, increment that key by 1. if token not in hashmap, create new key with token
@@ -59,7 +59,7 @@ def print_frequencies(frequencies):
 
 def main():
     tokens = tokenize(sys.argv[1])
-    freq = computeWordFrequencies(tokens)
+    freq = compute_word_frequencies(tokens)
     print_frequencies(freq)
 
 
