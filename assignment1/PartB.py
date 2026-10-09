@@ -1,21 +1,22 @@
 import sys
 from PartA import tokenize
 
+
 def count_common_tokens(file_path_1, file_path_2):
-    token1_set = set(tokenize(file_path_1))
-    token2_list = tokenize(file_path_2)
-    count = 0
+    """
+    O(n1 + n2) time complexity
+    Tokenize each file once, convert to a set and return the length of set intersection
+    """
     
-    for token in token2_list:
-        if token in token1_set:
-            count += 1
-            token1_set.discard(token)
-        if not token1_set:
-            break
-    return count
+    tokens_1 = set(tokenize(file_path_1))
+    tokens_2 = set(tokenize(file_path_2))
+    return len(tokens_1 & tokens_2)
 
 def main():
+    if len(sys.argv) != 3:
+        sys.exit(1)
     print(count_common_tokens(sys.argv[1], sys.argv[2]))
+
 
 if __name__ == "__main__":
     main()
