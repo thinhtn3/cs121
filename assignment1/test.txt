@@ -1,0 +1,5 @@
+Apple apple aPpLe APPLE! The quick brown fox jumps over the lazy dog.
+The dog barks; the fox runs away... the end?
+Numbers: 42 7 42 2026 abc123 123abc a1b2c3
+Punctuation-separated: well-known, state-of-the-art, don't, it's, e-mail, user@example.com
+Tabs	and		multiple   spaces   between	words

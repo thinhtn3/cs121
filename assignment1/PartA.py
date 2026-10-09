@@ -20,7 +20,13 @@ def tokenize(text_file_path):
     return tokens
 
 def computeWordFrequencies(tokens):
-    pass
+    hashmap = dict()
+    for token in tokens:
+        if token not in hashmap:
+            hashmap[token] = 1
+        else:
+            hashmap[token] += 1
+    return hashmap
 
 
 def print_frequencies(frequencies):
@@ -28,7 +34,8 @@ def print_frequencies(frequencies):
 
 
 def main():
-    pass
+    tokenized = tokenize(sys.argv[1])
+    print(computeWordFrequencies(tokenized))
 
 
 if __name__ == "__main__":
